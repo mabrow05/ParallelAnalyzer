@@ -1,4 +1,6 @@
 {
+  #include "../include/sourcePeaks.h"
+
   cout.setf(ios::fixed, ios::floatfield);
   cout.precision(12);
 
@@ -24,24 +26,24 @@
 
   // East residuals
   double EQ[4];
-  EQ[0] = peakCe;//98.2;
-  EQ[1] = peakSn;//331.2;
-  EQ[2] = peakBiLow; //443.0;
-  EQ[2] = peakBiHigh;//928.0;
+  EQ[0] = peakCe_EQ;//98.2;
+  EQ[1] = peakSn_EQ;//331.2;
+  EQ[2] = peakBiLow_EQ; //443.0;
+  EQ[3] = peakBiHigh_EQ;//928.0;
  
-  double dEQ[4] = {};
+  double dEQ[4] = {0.};
 
   double resEast[4];
-  resEast[0] = 0.148008;
-  resEast[1] =  1.62443;
-  resEast[2] = 8.22717;
-  resEast[3] = -3.73;
+  resEast[0] = -.8;
+  resEast[1] =  1.8;
+  resEast[2] = -2.;
+  resEast[3] = 0.8;
 
   double sigEast[4];
-  sigEast[0] = 1.81036;
-  sigEast[1] = 4.25013;
-  sigEast[2] = 5.69134;
-  sigEast[3] = 14.091;
+  sigEast[0] = 1.3;
+  sigEast[1] = 3.9;
+  sigEast[2] = 4.9;
+  sigEast[3] = 10.5;
 
   // Plot
   c1 = new TCanvas("c1", "canvas");
@@ -80,9 +82,12 @@
   gr0->SetLineStyle(2);
 
   Int_t nn = 5;
-  Double_t perc=0.016;
-  Double_t x2[nn] = {0., 98.2., 331.2, 928., 1000.};
-  Double_t percent[nn] = {1., perc, perc, perc, perc};
+  Double_t perc1=0.022;
+  Double_t perc2=0.018;
+  Double_t perc3=0.013;
+  Double_t perc4=0.013;
+  Double_t x2[nn] = {0., peakCe_EQ, peakSn_EQ, peakBiHigh_EQ, 1000.};
+  Double_t percent[nn] = {1., perc1, perc2, perc3, perc4};
   Double_t y_upper[nn], y_lower[nn];
   for (int i=1; i<nn; i++) {
     Double_t val = x2[i]*percent[i];
